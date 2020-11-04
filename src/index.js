@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux'
+import { createStore,applyMiddleware } from 'redux'
 import rootReducer from './reducers'
 import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
 
 import './index.css';
 import App from './App';
 
 
-const store=createStore(rootReducer);
+const store=createStore(
+  rootReducer,
+  applyMiddleware(thunk),
+  );
 
 
-
+//can console log the changings state of store 
 store.subscribe(()=>console.log(store.getState()))
 
 // store.dispatch(startGame())
